@@ -13,7 +13,7 @@ const CharacterPad: React.FC = () => {
 
   const initBlock = (): JSX.Element[] => {
     const elements: JSX.Element[] = [];
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 16; i++) {
       elements.push(
         <button
           key={i}
@@ -37,7 +37,7 @@ const CharacterPad: React.FC = () => {
   };
 
   return (
-    <div className="flex h-80 w-80 flex-row flex-wrap rounded-xl bg-black">
+    <div className="flex h-64 w-64 flex-row flex-wrap rounded-xl bg-black">
       {initBlock()}
     </div>
   );

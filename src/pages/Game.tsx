@@ -35,8 +35,20 @@ export const CurrentWordContext = createContext<CurrentWordContextType | null>(
 );
 
 export const getRandomLetter = () => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const randomIndex = Math.floor(Math.random() * alphabet.length);
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const typeProb = Math.random();
+  console.log("type prob" + typeProb);
+  if (typeProb < 0.25) {
+    alphabet = "AEIOU";
+  } else if (0.25 < typeProb && typeProb < 0.9) {
+    alphabet = "BCDFGHKLMNPRST";
+  } else {
+    alphabet = "JQVWXYZ";
+  }
+  const temp = Math.random();
+  console.log("temp" + temp);
+  const randomIndex = Math.floor(temp * alphabet.length);
+  console.log(randomIndex);
   return alphabet[randomIndex];
 };
 export default function GamePage() {
@@ -58,7 +70,7 @@ export default function GamePage() {
 
   // init char array and selected array when mounted
   useEffect(() => {
-    const length = 25;
+    const length = 16;
     const falseArray = new Array();
     setSelectedArray(falseArray);
     const randomLettersArray = Array.from({ length }, getRandomLetter);
